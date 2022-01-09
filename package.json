@@ -1,19 +1,12 @@
 {
   "$schema": "https://fbflipper.com/schemas/plugin-package/v2.json",
-  "name": "flipper-plugin-redux-debugger",
-  "id": "flipper-plugin-redux-debugger",
+  "name": "flipper-plugin-redux-debugger-colorized",
+  "id": "flipper-plugin-redux-debugger-colorized",
   "version": "2.0.0",
-  "description": "Redux Debugger for Flipper",
+  "description": "Redux Debugger for Flipper with colorized",
   "main": "dist/bundle.js",
   "flipperBundlerEntry": "index.tsx",
-  "author": "jk-gan <junkai@hey.com> (https://github.com/jk-gan)",
-  "contributors": [
-    {
-      "name": "Wai Pai Lee",
-      "email": "pailee.wai@gmail.com",
-      "url": "https://plwai.com/"
-    }
-  ],
+  "author": "snamiki1212 <snamiki1212@gmail.com> (https://github.com/snamiki1212)",
   "license": "MIT",
   "keywords": [
     "flipper-plugin",
