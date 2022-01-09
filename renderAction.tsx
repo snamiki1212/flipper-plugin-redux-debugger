@@ -22,7 +22,7 @@ const SPECIAL_TEXT_COLOR = "#CCD1E4";
 /**
  * Types
  */
-type Category = {
+type TextWithMeta = {
   text: string;
   isSeparator?: boolean;
   isSpecialText?: boolean;
@@ -38,7 +38,7 @@ const split = (text: string) => {
   return parts;
 };
 
-const categorize = (list: string[]): Category[] => {
+const categorize = (list: string[]): TextWithMeta[] => {
   return list.map((text) => {
     if (text === SEPARATOR) return { text, isSeparator: true };
     if (RTK_THUNK_LIST.includes(text)) return { text, isSpecialText: true };
@@ -46,7 +46,7 @@ const categorize = (list: string[]): Category[] => {
   });
 };
 
-const colorize = (list: Category[]) => {
+const colorize = (list: TextWithMeta[]): TextWithMeta[] => {
   let i = 0;
   return list.map((item) => {
     if (item.isSeparator) return { ...item, color: SEPARATOR_COLOR };
@@ -61,7 +61,7 @@ const colorize = (list: Category[]) => {
   });
 };
 
-const componentrize = (list: Category[]) => {
+const componentrize = (list: TextWithMeta[]) => {
   const components = list.map(({ text, isSeparator, isSpecialText, color }) => {
     const paddingHorizontal = isSeparator
       ? { paddingLeft: 1, paddingRight: 1 }
