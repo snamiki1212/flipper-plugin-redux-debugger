@@ -14,7 +14,7 @@
     "react-native"
   ],
   "icon": "apps",
-  "title": "Redux Debugger",
+  "title": "Redux Debugger Colorized",
   "category": "Redux",
   "peerDependencies": {
     "flipper": "latest",
