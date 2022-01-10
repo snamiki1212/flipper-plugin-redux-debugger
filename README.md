@@ -4,9 +4,9 @@
 
 This plugin has been enhanced the readability for action columns by following features:
 
-- Dividing separator with a slash (`/`) and padding horizontal
+- Dividing with separator using a slash (`/`) and padding horizontally
 - Colorizing each word
-- Decorating for special keywords (`fulfilled`, `pending`, `rejected`)
+- Decorating special keywords (`fulfilled`, `pending`, `rejected`)
 
 ## Installation
 
@@ -17,7 +17,7 @@ This plugin has been enhanced the readability for action columns by following fe
 
 ## Acknowledgement
 
-This plugin is forked from [jk-gan/flipper-plugin-redux-debugger](https://github.com/jk-gan/flipper-plugin-redux-debugger). Please read original README for understanding features.
+This plugin is forked from [jk-gan/flipper-plugin-redux-debugger](https://github.com/jk-gan/flipper-plugin-redux-debugger). Please read original README to understand.
 
 ## LICENSE
 
