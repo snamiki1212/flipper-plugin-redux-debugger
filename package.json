@@ -2,7 +2,7 @@
   "$schema": "https://fbflipper.com/schemas/plugin-package/v2.json",
   "name": "flipper-plugin-redux-debugger-colorized",
   "id": "flipper-plugin-redux-debugger",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Redux Debugger for Flipper with colorized",
   "main": "dist/bundle.js",
   "flipperBundlerEntry": "index.tsx",
@@ -21,11 +21,11 @@
     "flipper-plugin": "*"
   },
   "devDependencies": {
+    "antd": "latest",
     "flipper": "latest",
-    "flipper-plugin": "latest",
     "flipper-pkg": "latest",
-    "react": "latest",
-    "antd": "latest"
+    "flipper-plugin": "latest",
+    "react": "latest"
   },
   "scripts": {
     "prepack": "flipper-pkg lint && flipper-pkg bundle"
