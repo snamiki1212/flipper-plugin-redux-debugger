@@ -29,5 +29,9 @@
   },
   "scripts": {
     "prepack": "flipper-pkg lint && flipper-pkg bundle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snamiki1212/flipper-plugin-redux-debugger-colorized"
   }
 }
