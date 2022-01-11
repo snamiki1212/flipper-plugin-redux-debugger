@@ -44,12 +44,17 @@ const columns = [
     title: "Time",
   },
   {
-    key: "action",
+    key: "colorizedAction",
     title: "Action",
   },
   {
     key: "duration",
     title: "Duration",
+  },
+  {
+    key: "action",
+    title: "SearchableAction",
+    visible: false,
   },
 ];
 
@@ -58,7 +63,8 @@ function createRows(actions: ActionState[]): Record<string, any>[] {
     return {
       id: action.id,
       time: action.time,
-      action: renderAction(action.action.type),
+      action: action.action.type,
+      colorizedAction: renderAction(action.action.type),
       duration: action.took,
     };
   });
