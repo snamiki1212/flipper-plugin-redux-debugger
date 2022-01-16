@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   PluginClient,
   createState,
@@ -12,9 +12,12 @@ import {
   Tabs,
   Tab,
   useMemoize,
+  DataTableColumn,
 } from "flipper-plugin";
 import { Button, Input, message } from "antd";
-import { renderAction } from "./renderAction";
+import { ColorizedAction } from "./renderAction";
+
+const MemoizedColorizedAction = memo(ColorizedAction);
 
 const { TextArea } = Input;
 
@@ -34,7 +37,7 @@ type ActionState = {
 
 type Events = { actionDispatched: ActionState; actionInit: ActionState };
 
-const columns = [
+const columns: DataTableColumn[] = [
   {
     key: "id",
     visible: false,
@@ -46,6 +49,9 @@ const columns = [
   {
     key: "colorizedAction",
     title: "Action",
+    onRender: (row: MyRow, selected: boolean, index: number) => (
+      <MemoizedColorizedAction actionName={row.colorizedAction} />
+    ),
   },
   {
     key: "duration",
@@ -58,17 +64,24 @@ const columns = [
   },
 ];
 
-function createRows(actions: ActionState[]): Record<string, any>[] {
-  return actions.map((action) => {
-    return {
-      id: action.id,
-      time: action.time,
-      action: action.action.type,
-      colorizedAction: renderAction(action.action.type),
-      duration: action.took,
-    };
-  });
-}
+type MyRow = {
+  id: number;
+  time: string;
+  action: string;
+  colorizedAction: string;
+  duration: string;
+};
+
+const createRows = (actions: ActionState[]) =>
+  actions.map((action) => createRow(action));
+
+const createRow = (action: ActionState): MyRow => ({
+  id: action.id,
+  time: action.time,
+  action: action.action.type,
+  colorizedAction: action.action.type,
+  duration: action.took,
+});
 
 export function plugin(client: PluginClient<Events, {}>) {
   const selectedID = createState<number | null>(null, { persist: "selection" });
@@ -173,8 +186,9 @@ export function Component() {
         />
         <Button onClick={instance.sendDispatchMessage}>Dispatch Action</Button>
       </Panel>
-      <DataTable<Record<string, any>>
+      <DataTable<MyRow>
         records={rows}
+        recordsKey="id"
         columns={columns}
         enableSearchbar={true}
         enableAutoScroll={true}
