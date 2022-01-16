@@ -1,8 +1,12 @@
+import React from "react";
 import { Typography } from "antd";
 
-export const renderAction = (action: string) => {
-  const splitted = split(action);
-  if (splitted.length <= 1) return action;
+export const ColorizedAction: React.VFC<{ actionName: string }> = ({
+  actionName,
+}) => {
+  console.log("Render Colorized Action");
+  const splitted = split(actionName);
+  if (splitted.length <= 1) return <>{actionName}</>;
 
   const categorized = categorize(splitted);
   const colorized = colorize(categorized);
